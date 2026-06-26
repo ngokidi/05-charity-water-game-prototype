@@ -3,31 +3,37 @@ let progress = 0;
 
 const scoreDisplay = document.getElementById("score");
 const messageDisplay = document.getElementById("message");
+const player = document.getElementById("player-image");
 
-// Update score on screen
 function updateScore() {
     scoreDisplay.textContent = score;
 }
 
-// Move forward safely
 function gainPoints() {
+
     score += 10;
     progress++;
 
     updateScore();
 
+    player.style.transform = "translateY(-10px)";
+
+    setTimeout(() => {
+        player.style.transform = "translateY(0)";
+    }, 200);
+
     messageDisplay.textContent =
         "✅ Great job! You're getting closer to clean water.";
     messageDisplay.style.color = "#159A48";
 
-    // Optional win after 5 successful moves
+    // Auto-win after 5 successful moves
     if (progress >= 5) {
         winGame();
     }
 }
 
-// Hit polluted water or trash
 function losePoints() {
+
     score -= 5;
 
     if (score < 0) {
@@ -36,50 +42,50 @@ function losePoints() {
 
     updateScore();
 
+    player.style.transform = "rotate(-15deg)";
+
+    setTimeout(() => {
+        player.style.transform = "rotate(0deg)";
+    }, 200);
+
     messageDisplay.textContent =
-        "❌ You hit pollution! Be careful.";
+        "❌ Pollution slowed you down!";
     messageDisplay.style.color = "#F5402C";
 }
 
-// Player wins
-function winGame() {
-    messageDisplay.textContent =
-        "🎉 Congratulations! You reached clean water!";
-    messageDisplay.style.color = "#2E9DF7";
-
-    // Disable buttons after winning
-    const buttons = document.querySelectorAll(".path, .obstacle, .goal");
-
-    buttons.forEach(button => {
-        button.disabled = true;
-    });
-}
-
-// Goal button clicked
 function reachGoal() {
     winGame();
 }
 
-// Restart game
+function winGame() {
+
+    messageDisplay.textContent =
+        "🎉 Congratulations! You reached clean water!";
+    messageDisplay.style.color = "#2E9DF7";
+
+    document.querySelectorAll(".path, .obstacle, .goal")
+        .forEach(button => {
+            button.disabled = true;
+        });
+}
+
 function resetGame() {
+
     score = 0;
     progress = 0;
 
     updateScore();
 
     messageDisplay.textContent =
-        "💧 Game restarted. Help Dropy reach clean water!";
+        "💧 Game restarted. Good luck!";
     messageDisplay.style.color = "#2E9DF7";
 
-    // Re-enable buttons
-    const buttons = document.querySelectorAll(".path, .obstacle, .goal");
+    document.querySelectorAll(".path, .obstacle, .goal")
+        .forEach(button => {
+            button.disabled = false;
+        });
 
-    buttons.forEach(button => {
-        button.disabled = false;
-    });
+    player.style.transform = "none";
 }
 
-// Load default message
-messageDisplay.textContent =
-    "💧 Click 'Move Forward' and avoid pollution!";
-messageDisplay.style.color = "#2E9DF7";
+updateScore();
