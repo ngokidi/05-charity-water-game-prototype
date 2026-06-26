@@ -13,3 +13,121 @@ Secondary Colors:
 - Pink:       #F16061
 
 */
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #8BD1CB;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+header {
+    background-color: #FFC907;
+    color: #000;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.game-info {
+    background-color: white;
+    color: #2E9DF7;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 250px;
+    margin: 0 auto 20px auto;
+    font-weight: bold;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.player {
+    font-size: 50px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Safe path / move forward */
+.path {
+    background-color: #4FCB53;
+    color: white;
+}
+
+/* Obstacles */
+.obstacle {
+    background-color: #F5402C;
+    color: white;
+}
+
+/* Clean water goal */
+.goal {
+    background-color: #2E9DF7;
+    color: white;
+    font-weight: bold;
+}
+
+/* Restart button */
+.reset-btn {
+    margin-top: 20px;
+    background-color: #FF902A;
+    color: white;
+    font-weight: bold;
+}
+
+/* Message area */
+#message {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #159A48;
+}
+
+/* Optional styling for losing messages */
+.lose-message {
+    color: #F5402C;
+}
+
+/* Optional styling for winning messages */
+.win-message {
+    color: #2E9DF7;
+}
+
+@media (max-width: 600px) {
+    .game-board {
+        width: 90%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
