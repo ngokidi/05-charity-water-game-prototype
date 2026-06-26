@@ -3,11 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Dropy - Clean Water Quest</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to the Charity Water Game Prototype</h1>
+
+    <header>
+        <h1>💧 Dropy: Clean Water Quest</h1>
+        <p>Help Dropy reach clean water safely!</p>
+    </header>
+
+    <div class="game-info">
+        <h2>Score: <span id="score">0</span></h2>
+    </div>
+
+    <div class="game-board">
+        <div class="player" id="player">💧</div>
+
+        <button class="obstacle" onclick="losePoints()">🗑️</button>
+        <button class="obstacle" onclick="losePoints()">☣️</button>
+
+        <button class="path" onclick="gainPoints()">➡️ Move Forward</button>
+
+        <button class="goal" onclick="winGame()">🚰 Clean Water</button>
+    </div>
+
+    <div id="message"></div>
+
+    <button class="reset-btn" onclick="resetGame()">Restart Game</button>
+
     <script src="script.js"></script>
+
 </body>
 </html>
